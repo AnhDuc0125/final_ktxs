@@ -105,24 +105,7 @@ function customColumn() {
     mozColumns: 2,
     width: "35px",
   });
-
-  //nút submit không load lại trang
-  var formElement = document.querySelector("#form_custom");
-  formElement.addEventListener("submit", function (e) {
-    e.preventDefault();
-    valueInput.value = "";
-  });
 }
-
-//confirm lại dã điền thần tài chưa
-document.addEventListener("keydown", function (e) {
-  if (e.keyCode == 80 && e.ctrlKey) {
-    var confirmValue = confirm("Bố mẹ nhớ kiểm tra đã điền thần tài chưa nhé!");
-    if (confirmValue == false) {
-      e.preventDefault();
-    }
-  }
-});
 
 window.addEventListener("afterprint", (event) => {
   alert("Bố mẹ nhớ chụp lại màn hình gửi zalo cho cô nhé!");

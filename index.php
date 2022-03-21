@@ -358,26 +358,36 @@
     </div>
     <div class="custom__boxed--container">
         <div class="custom custom__boxed">
-            <div class="form__group">
-                <div class="label__control">Chọn cỡ chữ:</div>
-                <br />
-                <input type="radio" name="fontsize" checked class="fontsize__input" id="smallSize" />
-                <span>Nhỏ</span>
-                <br />
-                <br />
-                <input type="radio" name="fontsize" class="fontsize__input" id="mediumSize" />
-                <span>Vừa</span>
-                <br />
-                <br />
-                <div class="label__control">Cột:</div>
-                <input type="number" class="form__control input__fontsize"
-                    oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
-                    maxlength="1" />
-                <button class="btn2" onclick="changeFontSize()">OK</button>
-            </div>
+            <form id="form_custom">
+                <div class="form__group">
+                    <div class="label__control">Chọn cỡ chữ:</div>
+                    <br />
+                    <input type="radio" name="fontsize" checked class="fontsize__input" id="smallSize" />
+                    <span>Nhỏ</span>
+                    <br />
+                    <br />
+                    <input type="radio" name="fontsize" class="fontsize__input" id="mediumSize" />
+                    <span>Vừa</span>
+                    <br />
+                    <br />
+                    <div class="label__control">Cột:</div>
+                    <input type="number" class="form__control input__fontsize"
+                        oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                        maxlength="1" />
+                    <button class="btn2" onclick="changeFontSize()">OK</button>
+                </div>
+            </form>
         </div>
     </div>
 </body>
 <script src="app.js"></script>
+<script>
+//nút submit không load lại trang
+var formElement = document.querySelector("#form_custom");
+formElement.addEventListener("submit", function(e) {
+    e.preventDefault();
+    valueInput.value = "";
+});
+</script>
 
 </html>
