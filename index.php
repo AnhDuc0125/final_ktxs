@@ -1,17 +1,12 @@
 <?php
   include_once("simple_html_dom.php");
-  $html = file_get_html('https://xoso.congdong.vn/'); 
-//   echo $html;
-// foreach($html->find('img') as $element){
-//     echo $element->src . '<br>';
-// }
+  $html = file_get_html('https://ketqua1.net/xo-so-than-tai.php'); 
+  $thanTai = $html->find('[id=rs_0_0]', 0);
 
-$tableDienToan = $html->find('table', 10);
-$dienToan1 = $tableDienToan->find('td', 0);
-$dienToan2 = $tableDienToan->find('td', 1);
-$dienToan3 = $tableDienToan->find('td', 2);
-
-$thanTai = $html->find('table', 12);
+  $html = file_get_html('https://ketqua1.net/xo-so-dien-toan-123.php');
+  $dienToan1 = $html->find('[id=rs_0_0]', 0);
+  $dienToan2 = $html->find('[id=rs_0_1]', 0);
+  $dienToan3 = $html->find('[id=rs_0_2]', 0);
 ?>
 <!DOCTYPE html>
 <html lang="en">
