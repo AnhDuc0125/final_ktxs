@@ -72,41 +72,6 @@ switch (dayInWeek) {
     break;
 }
 
-function changeFontSize() {
-  let smallSize = document.querySelector("#smallSize");
-  let mediumSize = document.querySelector("#mediumSize");
-  let inputSize = document.querySelector(".input__fontsize");
-  if (smallSize.checked == true && inputSize.value) {
-    let font__cols1 = document.querySelector(`#data__${inputSize.value}--1`);
-    let font__cols2 = document.querySelector(`#data__${inputSize.value}--2`);
-    font__cols1.style.fontSize = "18px";
-    font__cols2.style.fontSize = "18px";
-  } else if (mediumSize.checked == true && inputSize.value) {
-    let font__cols1 = document.querySelector(`#data__${inputSize.value}--1`);
-    let font__cols2 = document.querySelector(`#data__${inputSize.value}--2`);
-    font__cols1.style.fontSize = "20px";
-    font__cols2.style.fontSize = "20px";
-  }
-}
-
-function customColumn() {
-  let valueInput = document.querySelector("#input__custom--column");
-  let column = document.querySelector(`#col-${valueInput.value}`);
-  let column_copy = document.querySelector(`#col-${valueInput.value}-copy`);
-  Object.assign(column.style, {
-    columns: 2,
-    webkitColumns: 2,
-    mozColumns: 2,
-    width: "35px",
-  });
-  Object.assign(column_copy.style, {
-    columns: 2,
-    webkitColumns: 2,
-    mozColumns: 2,
-    width: "35px",
-  });
-}
-
 window.addEventListener("afterprint", (event) => {
   alert("Bố mẹ nhớ chụp lại màn hình gửi zalo cho cô nhé!");
 });
