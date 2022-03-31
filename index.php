@@ -21,7 +21,7 @@
     <title>Con trai siêu đẹp zai</title>
 </head>
 
-<body onload="start()">
+<body>
     <div class="boxed__container">
         <div class="boxed--1">
             <div class="header">
@@ -360,21 +360,11 @@
         <div class="custom custom__boxed">
             <form id="form_custom">
                 <div class="form__group">
-                    <div class="label__control">Chọn cỡ chữ:</div>
-                    <br />
-                    <input type="radio" name="fontsize" checked class="fontsize__input" id="smallSize" />
-                    <span>Nhỏ</span>
-                    <br />
-                    <br />
-                    <input type="radio" name="fontsize" class="fontsize__input" id="mediumSize" />
-                    <span>Vừa</span>
-                    <br />
-                    <br />
-                    <div class="label__control">Cột:</div>
-                    <input type="number" class="form__control input__fontsize"
+                    <div>Điền cột cần sửa:</div>
+                    <input type="number" class="form__control" id="valueInput"
                         oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
                         maxlength="1" />
-                    <button class="btn2" onclick="changeFontSize()">OK</button>
+                    <button class="btn2">OK</button>
                 </div>
             </form>
         </div>
@@ -384,9 +374,64 @@
 <script>
 //nút submit không load lại trang
 var formElement = document.querySelector("#form_custom");
+var valueInput = document.querySelector("input#valueInput");
 formElement.addEventListener("submit", function(e) {
     e.preventDefault();
+    value = valueInput.value;
     valueInput.value = "";
+
+    //Thêm cột
+    let titleCols = document.querySelectorAll("th.cols__title");
+    let dataCols = document.querySelectorAll("th.cols");
+    let ulTag1 = document.querySelector(`#data__${value}--1`)
+    let ulTag2 = document.querySelector(`#data__${value}--2`)
+
+    titleCols[value].setAttribute("colspan", "2");
+    titleCols[parseInt(value) + 10].setAttribute("colspan", "2");
+
+    valueOfCol = dataCols[value].querySelectorAll("li");
+
+    arr1 = [];
+    arr2 = [];
+    counter = 0;
+    valueOfCol.forEach(function(item, index) {
+        if (counter > 6) {
+            arr2.push(item.innerText);
+        } else {
+            arr1.push(item.innerText);
+        }
+        counter++;
+    })
+
+    ulTag1.classList.add('new1')
+    ulTag2.classList.add('new1')
+    ulTag1.innerHTML = ""
+    ulTag2.innerHTML = ""
+
+
+    html1 = `<th class="cols">
+                <ul class="new2"></ul>
+            </th>`;
+
+    html2 = `<th class="cols">
+                <ul class="new2"></ul>
+            </th>`;
+
+    dataCols[value].insertAdjacentHTML("afterend", html1);
+    dataCols[parseInt(value) + 10]
+        .insertAdjacentHTML("afterend", html2);
+
+    arr1.forEach(function(item) {
+        newCol1 = document.querySelectorAll(".new1")
+        newCol1[0].innerHTML += `<li>${item}</li>`;
+        newCol1[1].innerHTML += `<li>${item}</li>`;
+    });
+
+    arr2.forEach(function(item) {
+        newCol2 = document.querySelectorAll(".new2")
+        newCol2[0].innerHTML += `<li>${item}</li>`;
+        newCol2[1].innerHTML += `<li>${item}</li>`;
+    });
 });
 </script>
 
