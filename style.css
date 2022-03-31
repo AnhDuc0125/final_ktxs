@@ -175,7 +175,7 @@ ul {
 }
 
 th.cols__title {
-  width: 46.19px;
+  width: auto;
 }
 
 .first__cols {
@@ -186,6 +186,7 @@ th.cols__title {
 th.cols {
   vertical-align: top;
   height: 137.07px;
+  min-width: 40px;
 }
 
 .title__table {
@@ -203,6 +204,7 @@ th.cols {
   transform: translateY(15px);
 }
 
+/* Box css */
 .custom__boxed--container {
   position: absolute;
   top: 50px;
@@ -210,14 +212,6 @@ th.cols {
   border-radius: 10px;
   border: none;
   background-color: #8ecae6;
-}
-
-.ask {
-  border-bottom: 2px solid #0085ff;
-}
-
-.fontsize__input {
-  cursor: pointer;
 }
 
 .form__group {
