@@ -248,6 +248,7 @@ button {
 
 /* print settings */
 @media print {
+/* remove second page */
   html,
   body {
     height: 100vh;
